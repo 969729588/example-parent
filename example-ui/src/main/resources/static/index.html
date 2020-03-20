@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>例子系统首页</title>
+
+    <!--jquery-->
+    <script type="text/javascript" src="js/jquery-1.11.3/jquery.min.js"></script>
+
+    <!--util-->
+    <script type="text/javascript" src="js/util/constant.js"></script>
+    <script type="text/javascript" src="js/util/base64.js"></script>
+    <script type="text/javascript" src="js/util/commonUtil.js"></script>
+    <script type="text/javascript" src="js/util/ajaxUtil.js"></script>
+
+    <script type="text/javascript">
+
+        //前端用来接收实例元数据和认证数据的
+        var metadata = JSON.parse('${metadata}');
+        var authData = JSON.parse('${authData}');
+
+        //保存到sessionStorage中
+        saveMetadata(metadata);
+        saveAuthData(authData);
+
+        $(function () {
+        });
+
+        function printData() {
+            console.log(JSON.stringify(metadata));
+            console.log(JSON.stringify(authData));
+        }
+
+
+        /**
+         * 测试参数传递
+         */
+        function loadTestParam() {
+            $('.content-frame').load(getContextPath() + '/testParam/testParam.html',function () {
+                //alert('加载页面完成，此时可以在回调函数中发送ajax请求数据，渲染页面。');
+            });
+        }
+
+        function loadTestFileupload() {
+            $('.content-frame').load(getContextPath() + '/testFileupload/testFileupload.html');
+        }
+
+    </script>
+
+    <style type="text/css">
+        .content-frame{
+            border:4px solid #090;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<h3>例子系统首页</h3>
+<button onclick="printData()">打印认证数据、实例元数据</button><br><br>
+<button onclick="loadTestParam();">测试参数传递</button><br><br>
+<button onclick="loadTestFileupload();">文件上传</button><br><br>
+
+<div class="content-frame">
+</div>
+</body>
+</html>
