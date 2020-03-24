@@ -10,10 +10,6 @@
 		<relativePath/>
 	</parent>
 
-	<properties>
-		<txlcn.version>5.0.2.RELEASE</txlcn.version>
-	</properties>
-
 	<artifactId>tx-client-service-a</artifactId>
 	<version>1.0.0.100</version>
 	<name>tx-client-service-a</name>
@@ -30,11 +26,6 @@
 		<dependency>
 			<groupId>com.milepost</groupId>
 			<artifactId>milepost-service</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.milepost</groupId>
-			<artifactId>milepost-dist-transaction</artifactId>
 		</dependency>
 
 		<dependency>

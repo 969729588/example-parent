@@ -1,8 +1,8 @@
 package com.milepost.txClientServiceA.person.dao;
 
+import com.milepost.exampleApi.entity.person.Person;
+import com.milepost.exampleApi.entity.person.PersonExample;
 import com.milepost.service.mybatis.dao.BaseMapper;
-import com.milepost.txClientServiceA.person.entity.Person;
-import com.milepost.txClientServiceA.person.entity.PersonExample;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

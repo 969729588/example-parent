@@ -5,7 +5,7 @@ info:
     version: 1.0.0.100
 
 server:
-  port: 9982
+  port: 9984
   servlet:
     context-path: "/tx-client-service-c"
 
@@ -15,34 +15,19 @@ spring:
   profiles:
     active: dev
   datasource:
-    druid:
-      #flyway使用这个参数,mysql/oracle
-      db-type: mysql
-
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/tx-client?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
-      username: root
-      #password: admin123
-      password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
-
-      initial-size: 5
-      max-active: 20
-      min-idle: 5
-      max-wait: 60000
-      pool-prepared-statements: true
-      max-pool-prepared-statement-per-connection-size: 20
-      #和上面的等价
-      #max-open-prepared-statements:
-      validation-query: SELECT 1 FROM DUAL
-      #validation-query-timeout:
-      test-on-borrow: false
-      test-on-return: false
-      test-while-idle: true
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
-      #max-evictable-idle-time-millis:
-      #配置多个英文逗号分隔
-      #filters:
+    # flyway使用这个参数，多数据源不需要配置此属性，支持oracle, mysql
+    platform: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.223.129:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
+    # 连接池属性配置见https://github.com/brettwooldridge/HikariCP，以下几个是常用的
+    hikari:
+      connection-timeout: 30001
+      idle-timeout: 600001
+      max-lifetime: 1800001
+      maximum-pool-size: 11
+      minimum-idle: 11
   redis:
     jedis:
       pool:
@@ -58,17 +43,16 @@ spring:
     #password: bomc
     #redis连接超时时间，单位毫秒
     timeout: 2000
-  cloud:
-    alibaba:
-      seata:
-        tx-service-group: my_test_tx_group
+  flyway:
+    enabled: false
+
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.1.105:8761/eureka/
+      defaultZone: http://192.168.223.129:8761/eureka/
       #defaultZone: http://172.16.1.208:8761/eureka/
   instance:
-    ip-address: 127.0.0.1
+    ip-address: 192.168.223.1
     #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
     #instance-id: xxx
 
@@ -98,5 +82,8 @@ multiple-tenant:
   label-and: aa,bb
   label-or: dd,ee,ff
 
+#tx-lcn:
+#  client:
+#    manager-address: 192.168.223.129:8070
 
 

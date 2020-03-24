@@ -31,10 +31,10 @@ public class StudentService extends BaseService<Student, StudentExample> {
         System.out.println(insert(record2));
     }
 
-    public void testTransactional(Student record, Student record2) {
+    public void testTransactional(Student record, Student record2, int exFlag) {
         System.out.println(insert(record));
         @SuppressWarnings("unused")
-        int i= 3/0;
+        int i= 3/exFlag;
         System.out.println(insert(record2));
     }
 

@@ -1,6 +1,5 @@
 package com.milepost.exampleService.beanUtils;
 
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.milepost.api.util.ReadAppYml;
 import org.apache.commons.beanutils.BeanUtils;
 import org.junit.Test;
@@ -48,7 +47,7 @@ public class TestBeanUtils {
 
         for(String multipleDsKey : multipleDsKeys){
             Map<String, Object> multipleDsPro = ReadAppYml.getMap("spring.datasource.druid." + multipleDsKey);
-            DataSource dataSource = DruidDataSourceBuilder.create().build();
+            DataSource dataSource = null;//
             BeanUtils.populate(dataSource, multipleDsPro);
             System.out.println(dataSource);
         }

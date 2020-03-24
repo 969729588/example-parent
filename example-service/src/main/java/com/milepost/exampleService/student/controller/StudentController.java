@@ -8,6 +8,7 @@ import com.milepost.api.vo.response.ResponseHelper;
 import com.milepost.core.spring.ApplicationContextProvider;
 import com.milepost.exampleApi.entity.student.Student;
 import com.milepost.exampleService.student.service.StudentService;
+import com.milepost.service.config.dynamicDs.DataSourceContextHolder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -190,18 +191,22 @@ public class StudentController {
     }
 
     @GetMapping(value = "/testTransactional")
-    public Response<?> testTransactional(){
+    public Response<?> testTransactional(@RequestParam("name1") String name1, @RequestParam("name2") String name2,
+                                         @RequestParam("exFlag") int exFlag, @RequestParam("dsKey") String dsKey){
         Response<?> response = null;
         try{
+
+            DataSourceContextHolder.setDataSource(dsKey);
+
             Student record1 = new Student();
             record1.setId(DataUUIDUtil.randomUUID());
-            record1.setName("11");
+            record1.setName(name1);
 
             Student record2 = new Student();
             record2.setId(DataUUIDUtil.randomUUID());
-            record2.setName("22");
+            record2.setName(name2);
 
-            studentService.testTransactional(record1, record2);
+            studentService.testTransactional(record1, record2, exFlag);
             response = ResponseHelper.createSuccessResponse("");
         } catch (Exception e) {
             logger.error(e.getMessage(), e);

@@ -1,9 +1,9 @@
 package com.milepost.exampleService;
 
+import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
 import com.milepost.core.lock.SchedulerLock;
 import com.milepost.core.lock.SchedulerLockModel;
 import com.milepost.service.MilepostServiceApplication;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -16,6 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableFeignClients    //service也可能调用其他service
 @SpringBootApplication
 @EnableAspectJAutoProxy
+@EnableDistributedTransaction
 public class ExampleServiceApplication extends MilepostServiceApplication {
 
 	public static void main(String[] args) {

@@ -80,8 +80,6 @@ public class TestController {
     }
 
     /**
-     * 测试分布式事务
-     * http://192.168.223.1:9990/authentication-ui/test/testDistTransaction?param=123
      *
      * 测试时候需要给feignclient设置超时时间，否则超时后会自动重试，影响测试
      * feign:
@@ -93,12 +91,6 @@ public class TestController {
      * @param param
      * @return
      */
-    @ResponseBody
-    @GetMapping("/testDistTransaction")
-    public String testDistTransaction(@RequestParam("param") String param){
-        System.out.println("收到参数：" + param);
-        return testFc.testDistTransaction(param);
-    }
 
     @ResponseBody
     @PostMapping("/testFileupload")

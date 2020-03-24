@@ -82,19 +82,6 @@ public class TestController {
         return response;
     }
 
-    /**
-     * 测试分布式事务
-     * @param param
-     * @param principal
-     * @return
-     */
-    @ResponseBody
-    @GetMapping("/testDistTransaction")
-    public String testDistTransaction(@RequestParam("param") String param, Principal principal){
-        System.out.println(principal);
-        personService.testDistTransaction(param);
-        return "收到参数：" + param;
-    }
 
     @ResponseBody
     @PostMapping("/testFileupload")

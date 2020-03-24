@@ -1,10 +1,8 @@
 package com.milepost.txClientServiceC.test.controller;
 
-import com.milepost.api.util.DataUUIDUtil;
-import com.milepost.txClientServiceC.person.entity.Person;
-import com.milepost.txClientServiceC.person.service.PersonService;
-import com.milepost.txClientServiceC.test.feignClient.TestBFc;
-import com.milepost.txClientServiceC.test.feignClient.TestCFc;
+import com.milepost.api.vo.response.Response;
+import com.milepost.api.vo.response.ResponseHelper;
+import com.milepost.txClientServiceC.test.service.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,31 +23,28 @@ public class TestController {
     private Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @Autowired
-    private TestBFc testBFc;
-
-    @Autowired
-    private TestCFc testCFc;
-
-    @Autowired
-    private PersonService personService;
+    private TestService testService;
 
     @ResponseBody
     @RequestMapping("/test1")
-    public String test1(@RequestParam("param") String param, Principal principal){
-        System.out.println(principal);
-        System.out.println(principal.getName());
-        System.out.println("收到参数：" + param);
+    public Response<String> test1(@RequestParam("exFlag") String exFlag, Principal principal){
+        Response<String> response = null;
+        try {
+            System.out.println(principal);
+            System.out.println(principal.getName());
+            System.out.println("收到参数：" + exFlag);
 
-//        testBFc.callB(param);
-//        System.out.println("-----------");
-//        testCFc.callC(param);
-
-        Person person = new Person();
-        person.setId(DataUUIDUtil.randomUUID());
-        person.setFirstName("ccc");
-        personService.test1(person);
-
-        return "收到参数：" + param;
+            int i = testService.test1(exFlag);
+            if(i > 0){
+                response = ResponseHelper.createSuccessResponse("操作成功");
+            }else{
+                response = ResponseHelper.createSuccessResponse("操作失败");
+            }
+        }catch (Exception e){
+            logger.error(e.getMessage(), e);
+            response = ResponseHelper.createExceptionResponse(e);
+        }
+        return response;
     }
 
 }

@@ -17,9 +17,6 @@ public interface TestFc {
     @GetMapping("/testManualToken")
     Response<String> testManualToken(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param);
 
-    @GetMapping("/testDistTransaction")
-    String testDistTransaction(@RequestParam("param") String param);
-
     /**
      * 使用@RequestPart传送文件
      * @param name

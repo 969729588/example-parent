@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.milepost.txClientServiceB.person.dao.PersonMapper" >
-  <resultMap id="BaseResultMap" type="com.milepost.txClientServiceB.person.entity.Person" >
+  <resultMap id="BaseResultMap" type="com.milepost.exampleApi.entity.person.Person" >
     <result column="ID" property="id" jdbcType="VARCHAR" />
     <result column="FIRST_NAME" property="firstName" jdbcType="VARCHAR" />
     <result column="LAST_NAME" property="lastName" jdbcType="VARCHAR" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     ID, FIRST_NAME, LAST_NAME, BIRTH, SCORE, REMARK
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.milepost.txClientServiceB.person.entity.PersonExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.milepost.exampleApi.entity.person.PersonExample" >
     select
     <if test="distinct" >
       distinct
@@ -84,13 +84,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.milepost.txClientServiceB.person.entity.PersonExample" >
+  <delete id="deleteByExample" parameterType="com.milepost.exampleApi.entity.person.PersonExample" >
     delete from person
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.milepost.txClientServiceB.person.entity.Person" >
+  <insert id="insert" parameterType="com.milepost.exampleApi.entity.person.Person" >
     insert into person (ID, FIRST_NAME, LAST_NAME, 
       BIRTH, SCORE, REMARK
       )
@@ -98,7 +98,7 @@
       #{birth,jdbcType=TIMESTAMP}, #{score,jdbcType=REAL}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.milepost.txClientServiceB.person.entity.Person" >
+  <insert id="insertSelective" parameterType="com.milepost.exampleApi.entity.person.Person" >
     insert into person
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -141,7 +141,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.milepost.txClientServiceB.person.entity.PersonExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.milepost.exampleApi.entity.person.PersonExample" resultType="java.lang.Integer" >
     select count(*) from person
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
