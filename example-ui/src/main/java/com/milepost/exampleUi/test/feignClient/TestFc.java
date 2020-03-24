@@ -11,10 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
  * Created by Ruifu Hua on 2020/1/8.
  */
 @FeignClient(value = "${info.app.service.name}")//获取配置文件中的service服务名称
-@RequestMapping("${info.app.service.prefix}/test")
 public interface TestFc {
 
-    @GetMapping("/testManualToken")
+    @GetMapping("${info.app.service.prefix}/test/testManualToken")
     Response<String> testManualToken(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param);
 
     /**
@@ -23,6 +22,6 @@ public interface TestFc {
      * @param multipartFile
      * @return
      */
-    @PostMapping(value = "/testFileupload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "${info.app.service.prefix}/test/testFileupload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     Response<String> testFileupload(@RequestParam(value="name", required=true) String name, @RequestPart(value = "file") MultipartFile multipartFile);
 }
