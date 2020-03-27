@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * Created by Ruifu Hua on 2020/1/8.
  */
-@FeignClient("other-service")//获取配置文件中的service服务名称
+@FeignClient(contextId = "testFc", name = "other-service")//获取配置文件中的service服务名称
 public interface TestFc {
 
     @RequestMapping("other-service/test/test3")

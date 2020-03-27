@@ -6,8 +6,8 @@ info:
     #此ui依赖的service的服务名称，用于在@FeignClient中
     service:
       name: example-service
-      #就是service的server.servlet.context-path，去掉“/”
-      prefix: "example-service"
+      #就是service的server.servlet.context-path
+      prefix: "/example-service"
 server:
   port: 9980
   servlet:
@@ -47,7 +47,10 @@ spring:
       file-size-threshold: 10KB
       # 文件临时存储位置，注意，路径要用//，不能用\
       # location: "F://testFile//fileUpload"
-
+#  cloud:
+#    loadbalancer:
+#      retry:
+#        enabled: false
 eureka:
   client:
     service-url:
@@ -64,23 +67,56 @@ multiple-tenant:
   label-and: aa,bb
   label-or: ee
 
-feign:
-  client:
-    config:
-      default:
-        readTimeout: 600000
-        connectTimeout: 600000
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    shutdown:
-      enabled: true
-thread-pool:
-  core-pool-size: 5
-  max-pool-size: 7
-  queue-capacity: 1
-
+#feign:
+#  #开启hystrix，可以使用@FeignClient注解的fallback属性和fallbackFactory属性
+#  hystrix:
+#    enabled: true
+#
+## 要保证 ribbon 的超时时间 < hystrix的超时时间，否则不能触发ribbon的重试，虽然本框架关闭了ribbon的重试
+#ribbon:
+#  #在同一个服务提供者中重试的次数，不包括第一次请求
+#  MaxAutoRetries: 0
+#  #切换其他服务提供者重试的次数，不包括第一次请求
+#  MaxAutoRetriesNextServer: 0
+#  #是否所有类型的请求都进行重试操作
+#  OkToRetryOnAllOperations: false
+#  #连接超时时间，单位ms，默认1000ms
+#  ConnectTimeout: 8000
+#  #读取超时时间，单位ms，默认1000ms
+#  ReadTimeout: 8000
+#
+##以下关于hystrix的配置，可以配置在服务消费者中来控制@FeignClient，也可以配置在服务提供者中来控制@HystrixCommand，效果是一样的
+#hystrix:
+#  command:
+#    #其中 default 指向@HystrixCommand注解的方法名称，default表示配置默认(全局)的，@FeignClient只支持default。
+#    default:
+#      execution:
+#        timeout:
+#          #开启线程执行超时，默认true
+#          enabled: true
+#        isolation:
+#          #hystrix资源隔离策略，THREAD(线程池)、SEMAPHORE(信号量)，默认THREAD
+#          strategy: THREAD
+#          thread:
+#            #hystrix线程执行超时时间，默认1000，在服务提供者中，ribbon的超时时间与hystrix的超时时间以小的那个为准，
+#            timeoutInMilliseconds: 10000
+#            #发生超时时，hystrix线程是否终止，默认true
+#            interruptOnTimeout: true
+#            #取消请求时，hystrix线程是否终止，默认false
+#            interruptOnCancel: false
+#      fallback:
+#        #开启fallback，影响@FeignClient和@HystrixCommand的fallback，默认true
+#        enabled: true
+#      circuitBreaker:
+#        #开启断路器功能(一段时间内失败的请求太多时@FeignClient和@HystrixCommand自动进入fallback逻辑的功能)，默认true
+#        enabled: false
+#        #滚动时间窗口内，失败请求数超过此数则断路器开启，默认20
+#        requestVolumeThreshold: 20
+#        #失败百分比，滚动时间窗口内，失败请求数这个百分比则断路器开启，默认50
+#        errorThresholdPercentage: 50
+#        #断路器开启后，超过此时间后尝试一次，如请求正常了，则关闭断路器，默认5000
+#        sleepWindowInMilliseconds: 10000
+#      metrics:
+#        rollingStats:
+#          #滚动时间窗口大小，默认10000
+#          timeInMilliseconds: 10000

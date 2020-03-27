@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * Created by Ruifu Hua on 2020/1/8.
  */
-@FeignClient(value = "${info.app.service.name}")//获取配置文件中的service服务名称
+@FeignClient(contextId = "testFc", value = "${info.app.service.name}")//获取配置文件中的service服务名称
 public interface TestFc {
 
     @GetMapping("${info.app.service.prefix}/test/testManualToken")

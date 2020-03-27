@@ -6,6 +6,7 @@ import com.milepost.core.lock.SchedulerLockModel;
 import com.milepost.service.MilepostServiceApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -17,6 +18,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @SpringBootApplication
 @EnableAspectJAutoProxy
 @EnableDistributedTransaction
+@EnableHystrix
 public class ExampleServiceApplication extends MilepostServiceApplication {
 
 	public static void main(String[] args) {

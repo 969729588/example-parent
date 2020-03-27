@@ -148,6 +148,29 @@ function map1() {
     });
 }
 
+
+function springQueryMapPojo() {
+    $.ajax({
+        type: "GET",
+        //contentType: "application/json;charset=UTF-8",
+        data: {
+                id : "1",
+                firstName : "张三",
+                //注意，不能传入Date类型的参数，因为FeignClient调用Service时会向Service传入“Mon Mar 16 01:46:00 CST 2020”，导致Service端400。
+                //birth : "2020-03-16 01:46:00",
+                score : 12.11
+            },
+        url: getContextPath() + '/testParam/springQueryMapPojo',
+        success: function (data) {
+            if (data.code == Constant.returnSuccess) {
+                console.log(data.payload);
+            } else {
+                alert(data.msg);
+            }
+        }
+    });
+}
+
 function pojo2() {
     $.ajax({
         type: "POST",

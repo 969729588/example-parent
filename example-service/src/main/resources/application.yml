@@ -144,6 +144,41 @@ tx-lcn:
   client:
     manager-address: 192.168.223.129:8070
 
+#hystrix:
+#  command:
+#    test2:
+##      execution:
+##        timeout:
+##          #开启线程执行超时，默认true
+##          enabled: true
+##        isolation:
+##          #hystrix资源隔离策略，THREAD(线程池)、SEMAPHORE(信号量)，默认THREAD
+##          strategy: THREAD
+##          thread:
+##            #hystrix线程执行超时时间，默认1000
+##            timeoutInMilliseconds: 1000
+##            #发生超时时，hystrix线程是否终止，默认true
+##            interruptOnTimeout: true
+##            #取消请求时，hystrix线程是否终止，默认false
+##            interruptOnCancel: false
+#      fallback:
+#        #开启fallback，影响@FeignClient和           ？？？？@HystrixCommand的fallback，默认true
+#        enabled: true
+#      circuitBreaker:
+#        #开启断路器功能(一段时间内失败的请求太多时@FeignClient和@HystrixCommand自动进入fallback逻辑的功能)，默认true
+#        enabled: true
+#        #滚动时间窗口内，失败请求数超过此数则断路器开启，默认20
+#        requestVolumeThreshold: 2
+#        #失败百分比，滚动时间窗口内，失败请求数这个百分比则断路器开启，默认50
+#        errorThresholdPercentage: 50
+#        #断路器开启后，超过此时间后尝试一次，如请求正常了，则关闭断路器，默认5000
+#        sleepWindowInMilliseconds: 10000
+#      metrics:
+#        rollingStats:
+#          #滚动时间窗口大小，默认10000
+#          timeInMilliseconds: 10000
+
+
 
 
 

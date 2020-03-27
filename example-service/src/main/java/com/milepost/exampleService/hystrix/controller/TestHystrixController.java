@@ -2,18 +2,16 @@ package com.milepost.exampleService.hystrix.controller;
 
 import com.milepost.api.vo.response.Response;
 import com.milepost.api.vo.response.ResponseHelper;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Ruifu Hua on 2020/3/21.
  */
-@Controller
+@RestController
 @RequestMapping("/testHystrix")
 public class TestHystrixController {
 
@@ -47,7 +45,7 @@ public class TestHystrixController {
      * @param param
      * @return
      */
-    //@HystrixCommand(fallbackMethod = "test1_fb")
+    @HystrixCommand(fallbackMethod = "test1_fb")
     @ResponseBody
     @GetMapping("/test1")
     public Response<String> test1(@RequestParam("param") int param){
@@ -63,7 +61,7 @@ public class TestHystrixController {
     }
 
     /**
-     * 永远不会进入才方法
+     * 永远不会进入才方法，因为test1把异常捕获了
      * @param param
      * @return
      */
@@ -72,7 +70,7 @@ public class TestHystrixController {
         return response;
     }
 
-    //@HystrixCommand(fallbackMethod = "test2_fb")
+    @HystrixCommand(fallbackMethod = "test2_fb")
     @ResponseBody
     @GetMapping("/test2")
     public Response<String> test2(@RequestParam("param") int param){

@@ -189,6 +189,25 @@ public class TestParamController {
      * @return
      */
     @ResponseBody
+    @GetMapping("/springQueryMapPojo")
+    public Response<Person> springQueryMapPojo(Person person) {
+        Response<Person> response = null;
+        try {
+            System.out.println("person: " + person);
+            response = testParamFc.springQueryMapPojo(person);
+        }catch (Exception e){
+            logger.error(e.getMessage(), e);
+            response = ResponseHelper.createExceptionResponse(e);
+        }
+        return response;
+    }
+
+    /**
+     * 入参当中，不能有多余一个参数被标@RequestBody注解，因为只有一个请求体
+     * @param person
+     * @return
+     */
+    @ResponseBody
     @PostMapping("/pojo2")
     public Response<Person> pojo2(@RequestBody Person person) {
         Response<Person> response = null;

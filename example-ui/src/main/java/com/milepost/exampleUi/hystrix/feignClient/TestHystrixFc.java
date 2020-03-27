@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * Created by Ruifu Hua on 2020/3/21.
  */
-@FeignClient(value = "${info.app.service.name}", fallback = TestHystrixFcFb.class)//获取配置文件中的service服务名称
+@FeignClient(contextId = "testHystrixFc", name = "${info.app.service.name}"/*, fallback = TestHystrixFcFb.class*/)//获取配置文件中的service服务名称
 public interface TestHystrixFc {
 
     @GetMapping("${info.app.service.prefix}/testHystrix/test1")
