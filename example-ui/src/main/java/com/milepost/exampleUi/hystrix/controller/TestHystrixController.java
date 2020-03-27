@@ -41,12 +41,19 @@ public class TestHystrixController {
     @GetMapping("/test2")
     public Response<String> test2(@RequestParam("param") int param){
         Response<String> response = null;
+        long start = System.currentTimeMillis();
+        long end1 = 0;
+        long end2 = 0;
         try {
             response = testHystrixFc.test2(param);
+            end1 = System.currentTimeMillis();
         }catch (Exception e){
             logger.error(e.getMessage(), e);
             response = ResponseHelper.createExceptionResponse(e);
+            end2 = System.currentTimeMillis();
         }
+        System.out.println("花费时间：" + (end1-start));
+        System.out.println("花费时间：" + (end2-start));
         return response;
     }
 

@@ -72,6 +72,22 @@ public class TestOpenFeignController {
     }
 
     /**
+     * @return
+     */
+    @GetMapping("/testFallback")
+    public Response<String> testFallback(){
+        Response<String> response = null;
+        try {
+            response = personFeignClient.testFallback();
+        }catch (Exception e){
+            logger.error(e.getMessage(), e);
+            response = ResponseHelper.createExceptionResponse(e);
+        }
+        System.out.println("---");
+        return response;
+    }
+
+    /**
      * FallbackFactory不太适用，因为UI的catch中能捕获到FeignClient的异常信息。
      * 需要开启hystrix.enabled=true
      * @return

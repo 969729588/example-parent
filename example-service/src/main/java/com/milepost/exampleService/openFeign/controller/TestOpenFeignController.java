@@ -68,6 +68,16 @@ public class TestOpenFeignController {
         return response;
     }
 
+    @GetMapping("/testFallback")
+    public Response<String> testFallback() throws Exception {
+        try {
+            int i = 1/0;
+        }finally {
+            System.out.println(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+        }
+        return ResponseHelper.createSuccessResponse(CALL_SUCCESS);
+    }
+
     @GetMapping("/testFallbackFactory")
     public Response<String> testFallbackFactory() throws Exception {
         try {

@@ -1,6 +1,7 @@
 package com.milepost.exampleService.beanUtils;
 
 import com.milepost.api.util.ReadAppYml;
+import com.mysql.cj.util.TimeUtil;
 import org.apache.commons.beanutils.BeanUtils;
 import org.junit.Test;
 
@@ -9,11 +10,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Ruifu Hua on 2020/2/13.
  */
 public class TestBeanUtils {
+
+    @Test
+    public void test3(){
+        System.out.println(TimeUnit.SECONDS.toMillis(8));
+    }
 
     @Test
     public void test2(){

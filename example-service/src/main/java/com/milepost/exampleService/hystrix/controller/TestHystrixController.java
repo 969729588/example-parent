@@ -39,9 +39,6 @@ public class TestHystrixController {
 
     /**
      * HystrixCommand当方法出现没有被捕获的异常时，执行fallbackMethod，
-     * 每一个方法都需要提供一个fallbackMethod，会造成方法暴增，
-     * 而且UI类服务和Service类服务的Controller中都是有try-catch的，
-     * 所以不推荐使用HystrixCommand
      * @param param
      * @return
      */
@@ -85,7 +82,7 @@ public class TestHystrixController {
      * @return
      */
     public Response<String> test2_fb(int param){
-        Response<String> response = ResponseHelper.createSuccessResponse("test1_fb，参数=" + param);
+        Response<String> response = ResponseHelper.createSuccessResponse("test2_fb，参数=" + param);
         return response;
     }
     /****************测试@HystrixCommand-开始****************/

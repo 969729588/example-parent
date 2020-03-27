@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @FeignClient(contextId = "personFeignClient",
         name = "${info.app.service.name}",
+        /*fallback = PersonFeignClientFallback.class,*/
         fallbackFactory = PersonFeignClientFallbackFactory.class)
 public interface PersonFeignClient {
 
     @GetMapping("${info.app.service.prefix}/testOpenFeign/testFallbackFactory")
     Response<String> testFallbackFactory();
 
+    @GetMapping("${info.app.service.prefix}/testOpenFeign/testFallback")
+    Response<String> testFallback();
 }
