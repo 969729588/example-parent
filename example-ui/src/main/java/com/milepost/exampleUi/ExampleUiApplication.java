@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableEurekaClient
 @EnableFeignClients
 @SpringBootApplication
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy //自定义注解
 @EnableHystrix
 public class ExampleUiApplication extends MilepostUiApplication {
 

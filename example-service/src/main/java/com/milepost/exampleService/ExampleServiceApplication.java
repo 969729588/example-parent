@@ -16,7 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableEurekaClient
 @EnableFeignClients    //service也可能调用其他service
 @SpringBootApplication
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy //自定义注解
 @EnableDistributedTransaction
 @EnableHystrix
 public class ExampleServiceApplication extends MilepostServiceApplication {
