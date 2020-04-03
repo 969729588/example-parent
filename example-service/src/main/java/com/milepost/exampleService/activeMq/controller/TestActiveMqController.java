@@ -1,6 +1,6 @@
 package com.milepost.exampleService.activeMq.controller;
 
-import com.milepost.core.mq.ActiveMqService;
+import com.milepost.core.activeMq.ActiveMqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Controller;

@@ -11,7 +11,7 @@ import org.springframework.jms.core.JmsTemplate;
 /**
  * Created by Ruifu Hua on 2020/2/8.
  * 本机mq地址
- * http://192.168.223.129:8161/
+ * http://192.168.223.136:8161/
  * admin/admin
  *
  */

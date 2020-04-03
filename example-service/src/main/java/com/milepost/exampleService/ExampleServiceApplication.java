@@ -26,10 +26,10 @@ public class ExampleServiceApplication extends MilepostServiceApplication {
 		run(ExampleServiceApplication.class, args);
 	}
 
-	@SchedulerLock(model = SchedulerLockModel.slave)
-	@Scheduled(initialDelay = 10000, fixedDelay = 5000)
-	public void testSchedulerLockSlave() {
-		System.out.println("所有slave运行这个定时任务");
-	}
+//	@SchedulerLock(model = SchedulerLockModel.slave)
+//	@Scheduled(initialDelay = 10000, fixedDelay = 5000)
+//	public void testSchedulerLockSlave() {
+//		System.out.println("所有slave运行这个定时任务");
+//	}
 
 }
