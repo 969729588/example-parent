@@ -81,7 +81,11 @@ spring:
     password: admin
     #是否确认发送的消息已经被消费
     publisher-confirms: true
-
+  cloud:
+    bus:
+      id: example-service
+#      trace:
+#        enabled: true
 eureka:
   client:
     service-url:
@@ -192,5 +196,8 @@ tx-lcn:
 
 
 
-
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

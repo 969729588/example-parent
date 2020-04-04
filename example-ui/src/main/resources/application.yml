@@ -47,6 +47,12 @@ spring:
     password: admin
     #是否确认发送的消息已经被消费
     #publisher-confirms: true
+  cloud:
+    bus:
+      id: example-ui
+#      trace:
+#        enabled: true
+
   servlet:
     multipart:
       enabled: true
