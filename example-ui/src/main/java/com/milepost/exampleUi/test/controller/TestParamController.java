@@ -1,5 +1,6 @@
 package com.milepost.exampleUi.test.controller;
 
+import brave.Tracer;
 import com.milepost.api.vo.response.Response;
 import com.milepost.api.vo.response.ResponseHelper;
 import com.milepost.exampleApi.entity.person.Person;
@@ -27,6 +28,12 @@ public class TestParamController {
 
     @Autowired
     private TestParamFc testParamFc;
+
+    /**
+     * 在链路中添加自定义标签
+     */
+    @Autowired(required = false)
+    private Tracer tracer;
 
     private Logger logger = LoggerFactory.getLogger(TestParamController.class);
 
@@ -174,6 +181,8 @@ public class TestParamController {
     public Response<Map<String, Object>> map1(@RequestParam Map<String, Object> map) {
         Response<Map<String, Object>> response = null;
         try {
+            tracer.currentSpan().tag("milepost", "test");
+
             System.out.println("map: " + map);
             response = testParamFc.map(map);
         }catch (Exception e){

@@ -36,38 +36,37 @@ spring:
     timeout: 2000
   activemq:
     broker-url: tcp://192.168.223.136:61616
-  rabbitmq:
-    #rabbitmq服务器ip
-    host: 192.168.223.136
-    #rabbitmq端口
-    port: 5672
-    #rabbitmq用户
-    username: admin
-    #rabbitmq密码
-    password: admin
-    #是否确认发送的消息已经被消费
-    #publisher-confirms: true
-  cloud:
-    bus:
-      id: example-ui
-#      trace:
-#        enabled: true
 
-  servlet:
-    multipart:
-      enabled: true
-      # 单个文件大小，默认1MB
-      max-file-size: 1MB
-      # 所有文件总大小，默认10MB
-      max-request-size: 10MB
-      # 超过这个数值，文件将会被写入到磁盘，默认0B
-      file-size-threshold: 10KB
-      # 文件临时存储位置，注意，路径要用//，不能用\
-      # location: "F://testFile//fileUpload"
-#  cloud:
-#    loadbalancer:
-#      retry:
-#        enabled: false
+#  rabbitmq:
+#    #rabbitmq服务器ip
+#    host: 192.168.223.136
+#    #rabbitmq端口
+#    port: 5672
+#    #rabbitmq用户
+#    username: admin
+#    #rabbitmq密码
+#    password: admin
+  #开启
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      # 跟踪采样率，0--1，默认是 0.1
+      probability: 1.0
+  zipkin:
+    sender:
+      type: rabbit
+
+  #关闭
+#  sleuth:
+#    enabled: false
+#  zipkin:
+#    enabled: false
+track:
+  enabled: true
+  sampling: 1
+
 
 eureka:
   client:

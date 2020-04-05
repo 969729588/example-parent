@@ -79,13 +79,33 @@ spring:
     username: admin
     #rabbitmq密码
     password: admin
-    #是否确认发送的消息已经被消费
-    publisher-confirms: true
-  cloud:
-    bus:
-      id: example-service
+#    #是否确认发送的消息已经被消费
+#    publisher-confirms: true
+#  cloud:
+#    bus:
+#      id: example-service
 #      trace:
 #        enabled: true
+  # 开启
+#  sleuth:
+#    web:
+#      client:
+#        enabled: true
+#    sampler:
+#      # 跟踪采样率，0--1，默认是 0.1
+#      probability: 1.0
+#  zipkin:
+#    sender:
+#      type: rabbit
+  # 关闭
+#  sleuth:
+#    enabled: false
+#  zipkin:
+#    enabled: false
+track:
+  enabled: true
+  sampling: 0.1
+
 eureka:
   client:
     service-url:

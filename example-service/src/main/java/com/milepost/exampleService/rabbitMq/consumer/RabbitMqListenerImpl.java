@@ -1,12 +1,14 @@
 package com.milepost.exampleService.rabbitMq.consumer;
 
 import com.milepost.core.rabbitMq.RabbitMqListener;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by Ruifu Hua on 2020/4/3.
  */
 @Component
+@ConditionalOnProperty("spring.rabbitmq.host")
 public class RabbitMqListenerImpl implements RabbitMqListener {
 
     @Override

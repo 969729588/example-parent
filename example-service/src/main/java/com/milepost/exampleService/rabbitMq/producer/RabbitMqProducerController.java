@@ -22,7 +22,7 @@ public class RabbitMqProducerController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Autowired
+    @Autowired(required = false)
     private RabbitMqService rabbitMqService;
 
     private String success = "发送成功";
