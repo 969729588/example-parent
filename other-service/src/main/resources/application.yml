@@ -26,7 +26,7 @@ spring:
     database: 1
     host: 192.168.223.136
     port: 6379
-    #password: bomc
+    #password: test
     #redis连接超时时间，单位毫秒
     timeout: 2000
   flyway:
