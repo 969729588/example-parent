@@ -9,7 +9,6 @@ import com.milepost.api.vo.response.ResponseHelper;
 import com.milepost.exampleApi.entity.person.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

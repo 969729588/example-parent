@@ -37,26 +37,26 @@ spring:
   activemq:
     broker-url: tcp://192.168.223.136:61616
 
-#  rabbitmq:
-#    #rabbitmq服务器ip
-#    host: 192.168.223.136
-#    #rabbitmq端口
-#    port: 5672
-#    #rabbitmq用户
-#    username: admin
-#    #rabbitmq密码
-#    password: admin
+  rabbitmq:
+    #rabbitmq服务器ip
+    host: 192.168.223.136
+    #rabbitmq端口
+    port: 5672
+    #rabbitmq用户
+    username: admin
+    #rabbitmq密码
+    password: admin
   #开启
-  sleuth:
-    web:
-      client:
-        enabled: true
-    sampler:
-      # 跟踪采样率，0--1，默认是 0.1
-      probability: 1.0
-  zipkin:
-    sender:
-      type: rabbit
+#  sleuth:
+#    web:
+#      client:
+#        enabled: true
+#    sampler:
+#      # 跟踪采样率，0--1，默认是 0.1
+#      probability: 1.0
+#  zipkin:
+#    sender:
+#      type: rabbit
 
   #关闭
 #  sleuth:
