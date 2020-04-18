@@ -46,7 +46,7 @@ public class StudentController {
     }
 
     /**
-     * http://192.168.223.1:9995/authentication-service/student/
+     * http://192.168.186.5:9995/authentication-service/student/
      * @param pageParameter
      * @param example
      * @return

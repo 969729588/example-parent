@@ -24,7 +24,7 @@ spring:
         max-wait: 2000
     #配置redis服务器属性
     database: 1
-    host: 192.168.223.136
+    host: 192.168.186.131
     port: 6379
     #password: test
     #redis连接超时时间，单位毫秒
@@ -38,7 +38,7 @@ eureka:
       defaultZone: http://192.168.1.105:8761/eureka/
       #defaultZone: http://172.16.1.208:8761/eureka/
   instance:
-    ip-address: 192.168.223.1
+    ip-address: 192.168.186.5
     #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
     #instance-id: xxx
 

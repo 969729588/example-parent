@@ -47,7 +47,7 @@ public class TestController {
 
     /**
      * 测试在请求中传入token，将token传入Fc中
-     * http://192.168.223.1:9990/authentication-ui/test/testManualToken?param=123
+     * http://192.168.186.5:9990/authentication-ui/test/testManualToken?param=123
      * @param param
      * @return
      */
@@ -61,7 +61,7 @@ public class TestController {
 
     /**
      * 测试获取当前用户信息
-     * http://192.168.223.1:9990/authentication-ui/test/testGetPrincipal
+     * http://192.168.186.5:9990/authentication-ui/test/testGetPrincipal
      * @param oAuth2Authentication
      * @param principal
      * @param authentication
