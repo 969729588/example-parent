@@ -1,0 +1,85 @@
+info:
+  app:
+    name: 单一SpringBoot应用例子
+    description: 单一SpringBoot应用例子
+    version: 1.0.0.100
+
+server:
+  port: 9982
+  servlet:
+    context-path: "/example-single-boot"
+
+spring:
+  application:
+    name: example-single-boot
+  profiles:
+    active: dev
+  datasource:
+    # flyway使用这个参数，多数据源不需要配置此属性，支持oracle, mysql
+    platform: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.186.131:3306/example_single_boot?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: admin123
+    # 连接池属性配置见https://github.com/brettwooldridge/HikariCP，以下几个是常用的
+    hikari:
+      connection-timeout: 30001
+      idle-timeout: 600001
+      max-lifetime: 1800001
+      maximum-pool-size: 11
+      minimum-idle: 11
+    one:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.186.131:3306/milepost_auth_1?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+      username: root
+      password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
+      hikari:
+        connection-timeout: 30002
+        idle-timeout: 600002
+        max-lifetime: 1800002
+        maximum-pool-size: 12
+        minimum-idle: 12
+    two:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.186.131:3306/milepost_auth_2?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+      username: root
+      password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
+      hikari:
+        connection-timeout: 30003
+        idle-timeout: 600003
+        max-lifetime: 1800003
+        maximum-pool-size: 13
+        minimum-idle: 13
+  redis:
+    jedis:
+      pool:
+        #配置连接池属性
+        max-active: 20
+        min-idle: 10
+        max-idle: 20
+        max-wait: 2000
+    #配置redis服务器属性
+    database: 1
+    host: 192.168.186.131
+    port: 6379
+    #password: test
+    #redis连接超时时间，单位毫秒
+    timeout: 2000
+  flyway:
+    enabled: true
+  activemq:
+    broker-url: tcp://192.168.186.131:61616
+  # web登录地址http://192.168.186.131:15672   admin/admin
+  data:
+    mongodb:
+      uri: mongodb://192.168.186.131:27017/test1
+  mail:
+    username: m18310891237@163.com
+    password: sqm123456qweasd
+    host: smtp.163.com
+
+thread-pool:
+  core-pool-size: 3
+  max-pool-size: 5
+  queue-capacity: 1
+  keep-alive-seconds: 600

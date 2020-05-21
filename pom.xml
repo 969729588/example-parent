@@ -21,10 +21,12 @@
         <module>example-api</module>
         <module>example-ui</module>
         <module>example-service</module>
+		<module>example-single-boot</module>
 		<module>other-service</module>
 		<module>tx-client-service-a</module>
 		<module>tx-client-service-b</module>
 		<module>tx-client-service-c</module>
+		<module>example-high-concurrency</module>
     </modules>
 
 </project>
