@@ -6,8 +6,9 @@ info:
 
 server:
   port: 9982
-  servlet:
-    context-path: "/example-single-boot"
+  # 前后端分离，不支持设置context-path，也没必要设置
+#  servlet:
+#    context-path: "/example-single-boot"
 
 spring:
   application:
@@ -70,9 +71,6 @@ spring:
   activemq:
     broker-url: tcp://192.168.186.131:61616
   # web登录地址http://192.168.186.131:15672   admin/admin
-  data:
-    mongodb:
-      uri: mongodb://192.168.186.131:27017/test1
   mail:
     username: m18310891237@163.com
     password: sqm123456qweasd

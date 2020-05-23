@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+    <!--使用高速模式（即 webkit 内核）渲染，国产浏览器默认是兼容模式（即 IE 内核），目前只有360浏览器支持此 <meta> 标签-->
+    <meta name="renderer" content="webkit">
+
+    <!--icon-->
+    <link rel="icon" href="/images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
+
+    <title>Milepost</title>
+
+    <!---------------------------------bootstrap begin--------------------------------->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="/bootstrap/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/bootstrap/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="/bootstrap/js/html5shiv.min.js"></script>
+    <script src="/bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+    <!---------------------------------bootstrap end--------------------------------->
+
+    <!---------------------------------customer css begin--------------------------------->
+    <link href="/home/css/dashboard.css" rel="stylesheet">
+    <link href="/home/css/alertUtil.css" rel="stylesheet">
+    <link href="/home/css/home.css" rel="stylesheet" />
+    <!---------------------------------customer css end--------------------------------->
+</head>
+<body>
+<!---------------------------------content begin--------------------------------->
+<!--导航-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand navbar-a" href="javascript:void(0);">xxx后台管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="navbar-a">当前用户：<span class="user"></span></a></li>
+                <li><a class="navbar-a logout" href="javascript:void(0);">登出</a></li>
+                <!--<li><a class="navbar-a " href="javascript:void(0);" onclick="printData()">printData</a></li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--导航下方的所有内容-->
+<div class="container-fluid">
+    <div class="row">
+        <!--左侧菜单-->
+        <div class="col-sm-3 col-md-2 sidebar leftMenu">
+            <ul class="nav nav-sidebar">
+                <!--<li class="active"><a href="loadContent();">服务实例</a></li>
+                <li><a href="javascript:void(0);">用户</a></li>-->
+            </ul>
+        </div>
+
+        <!--右侧content-->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        </div>
+    </div>
+</div>
+
+<!--测试alert-->
+<!--<div style="margin-left: 300px; margin-bottom: 50px">
+    <button onclick="info('test into<br>换行');">info，默认停留3s</button>&nbsp;
+    <button onclick="info('test into<br>换行', 1);">info，指定停留1s</button>&nbsp;
+    <button onclick="info('test into<br>换行', 0);">info，永远停留，不会自动关闭</button>&nbsp;
+    <br>
+    <button onclick="success('test success<br>换行');">success，默认停留3s</button>&nbsp;
+    <button onclick="success('test success<br>换行', 1);">success，指定停留1s</button>&nbsp;
+    <button onclick="success('test success<br>换行', 0);">success，永远停留，不会自动关闭</button>&nbsp;
+    <br>
+    <button onclick="warn('test warn<br>换行');">warn，默认永远停留</button>&nbsp;
+    <button onclick="warn('test warn<br>换行', 1);">warn，指定停留1s</button>&nbsp;
+    <br>
+    <button onclick="error('test error<br>换行');">error，默认永远停留</button>&nbsp;
+    <button onclick="error('test error<br>换行', 1);">error，指定停留1s</button>&nbsp;
+</div>-->
+<!---------------------------------content end--------------------------------->
+
+
+<!---------------------------------bootstrap begin--------------------------------->
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<!--<script type="text/javascript" src="js/jquery-1.11.3/jquery.min.js"></script>-->
+<script src="/js/jquery-1.12.4/jquery-1.12.4.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+<!-----------------------------------bootstrap end--------------------------------->
+
+<!-----------------------------------customer js begin--------------------------------->
+<!--util-->
+<script src="/js/util/constant.js"></script>
+<script src="/js/util/base64.js"></script>
+<script src="/js/util/commonUtil.js"></script>
+<script src="/js/util/ajaxUtil.js"></script>
+<script src="/js/util/alertUtil.js"></script>
+<!--page-->
+<script src="/home/js/home.js"></script>
+<!-----------------------------------customer js end--------------------------------->
+
+</body>
+</html>

@@ -16,6 +16,11 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers( "/test/test1", "/test/test2");
+        //web.ignoring().antMatchers( "/test/test1", "/test/test2");
+        web.ignoring().antMatchers( "/login/login.html", //登录页面
+                "/login/doLogin", //登录操作
+                "/login/checkCode",//验证码
+                "/home/home.html"//首页
+        );
     }
 }
