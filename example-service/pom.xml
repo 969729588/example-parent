@@ -25,6 +25,12 @@
 
 		<dependency>
 			<groupId>com.milepost</groupId>
+			<artifactId>example-api</artifactId>
+			<version>1.0.0.100</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.milepost</groupId>
 			<artifactId>milepost-service</artifactId>
 			<!--<exclusions>
 				<exclusion>
@@ -39,16 +45,16 @@
 		</dependency>
 
 		<dependency>
+			<!--milepost-mybatis-generator中排除了example-api>milepost-api中引入的包，
+				如果把example-api放到milepost-mybatis-generator的后面，
+				那么就会导致example-api>milepost-api中的包也被排除了。
+				-->
 			<groupId>com.milepost</groupId>
 			<artifactId>milepost-mybatis-generator</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>com.milepost</groupId>
-			<artifactId>example-api</artifactId>
-			<version>1.0.0.100</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
